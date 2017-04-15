@@ -165,6 +165,7 @@
 		updateFeatureContent();
 		//set to update 30 seconds
 		setInterval(function(){
+			$("iframe").attr("src", "http://savannanagorski.maps.arcgis.com/apps/webappviewer/index.html?id=0a3b54d1ea8e4aaf83e82371dc0299de")
 			updateFeatureContent();
 		}, 30000);
 		
@@ -206,7 +207,7 @@
 	<!-- Most Recent<br /> -->
 	<!-- Find/Hide<br /> -->
 	<!-- http://arcg.is/1vT1Ou -->
-	<iframe src="http://savannanagorski.maps.arcgis.com/apps/webappviewer/index.html?id=0a3b54d1ea8e4aaf83e82371dc0299de" class='webmap'></iframe>
+	<iframe src="http://savannanagorski.maps.arcgis.com/apps/webappviewer/index.html?id=0a3b54d1ea8e4aaf83e82371dc0299de" class='webmap' id='localWebMap' name='thisMapFrame'></iframe>
 	<div>&nbsp;</div>
 
 	<div id='credits'>
