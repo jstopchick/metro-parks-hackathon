@@ -74,12 +74,15 @@
 		}
 		.webmap {
 			border-radius: 12px;
-		}
-		.webmap {
 			height:75%;
 			margin-left:2%;
 			min-height:400px;
 			width:96%;
+		}
+		#autoRefreshMapContainer{
+			clear: both;
+			margin-left:2%;
+			width: 100%;
 		}
 		#credits table {
 			background-color: #FFFFFF;
@@ -165,6 +168,9 @@
 		updateFeatureContent();
 		//set to update 30 seconds
 		setInterval(function(){
+			if($("#autoRefreshMap").attr("checked")){
+				$("iframe").attr("src", "http://savannanagorski.maps.arcgis.com/apps/webappviewer/index.html?id=0a3b54d1ea8e4aaf83e82371dc0299de");
+			}
 			updateFeatureContent();
 		}, 30000);
 		
@@ -173,6 +179,7 @@
 </head>
 
 <body>
+	
 	<div class='header'>
 		<h1 style="float:left;">Parks ROCKS!&nbsp;</h1>
 		<span id="fbLink">
@@ -206,7 +213,10 @@
 	<!-- Most Recent<br /> -->
 	<!-- Find/Hide<br /> -->
 	<!-- http://arcg.is/1vT1Ou -->
-	<iframe src="http://savannanagorski.maps.arcgis.com/apps/webappviewer/index.html?id=0a3b54d1ea8e4aaf83e82371dc0299de" class='webmap'></iframe>
+	<div id='autoRefreshMapContainer'>
+		<input type="checkbox" id="autoRefreshMap" name="autoRefreshMap"> <label for="autoRefreshMap">Automatically reload map</label></input>
+	</div>
+	<iframe src="http://savannanagorski.maps.arcgis.com/apps/webappviewer/index.html?id=0a3b54d1ea8e4aaf83e82371dc0299de" class='webmap' id='localWebMap' name='thisMapFrame'></iframe>
 	<div>&nbsp;</div>
 
 	<div id='credits'>
