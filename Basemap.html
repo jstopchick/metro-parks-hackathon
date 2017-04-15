@@ -23,13 +23,13 @@
     require([
       "esri/Map",
       "esri/views/SceneView",
-	  "esri/layers/FeatureLayer",
+	  	"esri/layers/FeatureLayer",
 	  //"esri/widgets/LayerList",
       "dojo/domReady!"
     ], function(Map, SceneView, FeatureLayer) {
 
 		var map = new Map({
-			basemap: "streets",
+			basemap: "gray",
 			ground: "world-elevation"
 		});
 
@@ -46,7 +46,12 @@
 		});
 		view.map.add(fl);  // adds the layer to the map	  
 		
-	
+		//Trail paths
+		var fl = new FeatureLayer({
+			url: "https://services1.arcgis.com/WGzzp37bqYMLyzDR/arcgis/rest/services/AGOLHackathon1/FeatureServer/5/query?outFields=*&where=1%3D1"
+		});
+		view.map.add(fl);  // adds the layer to the map	  
+
 
 		/*var fl = new FeatureLayer({
 			url: "https://services2.arcgis.com/1UvBaQ5y1ubjUPmd/arcgis/rest/services/Open_Space_Corridors/FeatureServer/0/query?outFields=*&where=1%3D1"
