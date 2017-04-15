@@ -13,6 +13,12 @@
       height: 100%;
       width: 100%;
     }
+	body {
+		font-family: arial;
+	}
+	.header, .flare {
+		margin-left:2%;
+	}
 	.webmap {
 		width:96%;
 		margin-left:2%;
@@ -29,11 +35,15 @@
 </head>
 
 <body>
-	<h1>Tacoma Rocks Metro Parks Interactive App</h1>
-	<div>Top 5 contributers</div><br />
+	<div class='header'>
+		<h1>Tacoma Rocks Metro Parks Interactive App</h1>
+	</div>
+	<div class='flare'>Top 5 contributers</div>
+	<div>&nbsp;</div>
 	<!-- Most Recent<br /> -->
 	<!-- Find/Hide<br /> -->
 	<iframe src="http://arcg.is/0jTyia" class='webmap'></iframe>
+	<div>&nbsp;</div>
 
 	<div id='credits'>
 		<table>
