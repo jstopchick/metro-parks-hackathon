@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Get started with SceneView - Create a 3D map - 4.0</title>
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css">
+  <script src="https://js.arcgis.com/4.0/"></script>
+
+  <script>
+    require([
+      "esri/Map",
+      "esri/views/SceneView",
+	  	"esri/layers/FeatureLayer",
+	  //"esri/widgets/LayerList",
+      "dojo/domReady!"
+    ], function(Map, SceneView, FeatureLayer) {
+
+		var map = new Map({
+			basemap: "gray",
+			ground: "world-elevation"
+		});
+
+		var view = new SceneView({
+			container: "viewDiv",
+			map: map,
+			scale: 500000,
+			center: [-122.444, 47.25] 
+		});
+
+		//https://services2.arcgis.com/1UvBaQ5y1ubjUPmd/arcgis/rest/services/Biodiversity_Network/FeatureServer/0/query?outFields=*&where=1%3D1
+		var fl = new FeatureLayer({
+			url: "https://services2.arcgis.com/1UvBaQ5y1ubjUPmd/arcgis/rest/services/Parks_polygons/FeatureServer/0/query?outFields=*&where=1%3D1"
+		});
+		view.map.add(fl);  // adds the layer to the map	  
+		
+		//Trail paths
+		var fl = new FeatureLayer({
+			url: "https://services1.arcgis.com/WGzzp37bqYMLyzDR/arcgis/rest/services/AGOLHackathon1/FeatureServer/5/query?outFields=*&where=1%3D1"
+		});
+		view.map.add(fl);  // adds the layer to the map	  
+
+
+		/*var fl = new FeatureLayer({
+			url: "https://services2.arcgis.com/1UvBaQ5y1ubjUPmd/arcgis/rest/services/Open_Space_Corridors/FeatureServer/0/query?outFields=*&where=1%3D1"
+		});
+		view.map.add(fl);  // adds the layer to the map	  
+
+		var fl = new FeatureLayer({
+		url: "https://services2.arcgis.com/1UvBaQ5y1ubjUPmd/arcgis/rest/services/Biologic_Integrity_BIBI/FeatureServer/0/query?outFields=*&where=1%3D1"
+		});
+		view.map.add(fl);  // adds the layer to the map	  */
+
+	  
+		//var layerList = new LayerList({
+		//	view: view
+		//});
+		// Adds widget below other elements in the top left corner of the view
+		//view.ui.add(layerList, {
+		//	position: "top-left"
+		//});
+	  
+    });
+  </script>
+</head>
+
+<body>
+  <div id="viewDiv"></div>
+</body>
+</html>
