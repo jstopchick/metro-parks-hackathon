@@ -13,27 +13,40 @@
 		  height: 100%;
 		  width: 100%;
 		}
+		body {
+			background-color:#93bb41;
+			font-family: arial;
+		}
+		.btn {
+			display: inline-block;
+			padding: 6px 12px;
+			margin-bottom: 0;
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 1.42857143;
+			text-align: center;
+			white-space: nowrap;
+			vertical-align: middle;
+			-ms-touch-action: manipulation;
+			touch-action: manipulation;
+			cursor: pointer;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			background-image: none;
+			border: 1px solid transparent;
+			border-radius: 4px;
+		}
 		#fbLink, #instagramLink{
 			border-radius:12px;
 			display:inline-block;
 			margin-top:3px;
 			padding:7px 5px 5px 5px;
 		}
-		div#addLink {
-			clear:both;
-			margin-bottom: 10px;
-			border: 1px solid #333;
-			width: 250px;
-			background-color: #FFF;
-			border-radius: 12px;
-			padding: 10px;
-		}
-		div#addLink a {
+		button a {
+			color: #000;
 			text-decoration: none;
-		}
-		body {
-			background-color:#93bb41;
-			font-family: arial;
 		}
 		.header, .flare, .contributer, #instructionsTitle, #instructionsBlock {
 			margin-left:2%;
@@ -82,13 +95,13 @@
 			clear:both;
 		}
 	</style>
-
-
+	
 	<script
 	  src="http://code.jquery.com/jquery-3.2.1.min.js"
 	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 	  crossorigin="anonymous"></script>
 	  
+
 	<script type="text/javascript">
 		var servicePath = "https://services7.arcgis.com/yUlpDmY4xMAdbBIp/arcgis/rest/services/ParksRocks/FeatureServer/0/query"
 		var querySettings = {
@@ -183,9 +196,10 @@
 			You can search for rocks posted within a certain timeframe by clicking the far left button (query) and selecting to see rocks after a selected date. 
 			Find out more about the local parks by clicking on the parks in green!
 			<div>&nbsp;</div>
-			<div id='addLink'>
+			<button id='addLink' class='btn'>
 				<a href='http://savannanagorski.maps.arcgis.com/apps/GeoForm/index.html?appid=8ca7dced5fdf454f9e5207b688c1365e#top' onclick="window.open(this.href, 'addAParkRock', 'width=600;height');return false;">Add your own hidden or found rock</a>
-			</div>
+			</button>
+			<div>&nbsp;</div>
 		</div>
 	</div>
 	<div class='spacer'>&nbsp;</div>
