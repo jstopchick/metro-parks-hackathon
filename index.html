@@ -31,8 +31,9 @@
 		}
 	</style>
 
-	<!--<link rel="stylesheet" href="https://js.arcgis.com/4.3/esri/css/main.css">-->
-	<!--<script src="https://js.arcgis.com/4.3/"></script>-->
+	<link rel="stylesheet" href="https://js.arcgis.com/4.3/esri/css/main.css">
+	<script src="https://js.arcgis.com/4.3/"></script>
+	
 	<script
 	  src="http://code.jquery.com/jquery-3.2.1.min.js"
 	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -65,19 +66,28 @@
 				console.log("Updating recent results");
 				var recentRocks = "";
 				if(result.features.length){
-					for(var i=1;i<6;i++){
+					var count=0;
+					var hidFoundHash = {};
+					for(var i=1;i<result.features.length;i++){
 						var thisIndex = result.features.length-i;
 						if(!result.features[thisIndex]){
 							break;
 						}
-						recentRocks=recentRocks+result.features[thisIndex].attributes.RockersName + 
-							" : " +
-							result.features[thisIndex].attributes.HidorFound + 
-							" " +
-							result.features[thisIndex].attributes.Quantity + 
-							" at " +
-							result.features[thisIndex].attributes.ParkName + 
-							"<br />";
+						if(i < 6){
+							recentRocks=recentRocks+result.features[thisIndex].attributes.RockersName + 
+								" : " +
+								result.features[thisIndex].attributes.HidorFound + 
+								" " +
+								result.features[thisIndex].attributes.Quantity + 
+								" at " +
+								result.features[thisIndex].attributes.ParkName + 
+								"<br />";
+						}
+						if(!hidFoundHash[result.features[thisIndex].attributes.HidorFound]){
+							hidFoundHash[result.features[thisIndex].attributes.HidorFound]=0;
+						}
+						hidFoundHash[result.features[thisIndex].attributes.HidorFound] += result.features[thisIndex].attributes.Quantity;
+						console.log(result.features[i]);
 					}
 				}
 				$(".contributer").html(recentRocks);
@@ -92,6 +102,8 @@
 		setInterval(function(){
 			updateFeatureContent();
 		}, 30000);
+		
+		
 	</script>
 </head>
 
@@ -104,7 +116,8 @@
 	<div class='spacer'>&nbsp;</div>
 	<!-- Most Recent<br /> -->
 	<!-- Find/Hide<br /> -->
-	<iframe src="http://arcg.is/1vT1Ou" class='webmap'></iframe>
+	<!-- http://arcg.is/1vT1Ou -->
+	<iframe src="http://savannanagorski.maps.arcgis.com/apps/webappviewer/index.html?id=0a3b54d1ea8e4aaf83e82371dc0299de" class='webmap'></iframe>
 	<div>&nbsp;</div>
 
 	<div id='credits'>
