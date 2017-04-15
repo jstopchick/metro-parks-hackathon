@@ -13,3 +13,6 @@
 
 ### Contributors
 -
+
+### Presentation
+[Google Slides](https://docs.google.com/presentation/d/1tqUsA1fp5VMUpYjFfAQNnCgMz5ixqBllQb6Xu22DQCo/edit?usp=sharing)
