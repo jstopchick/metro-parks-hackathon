@@ -64,18 +64,21 @@
 				console.log(result, xhr);
 				//var 
 				var recentRocks = "";
-				for(var i=0;i<5;i++){
-					if(!result.features[i]){
-						break;
+				if(result.features.length){
+					for(var i=1;i<6;i++){
+						var thisIndex = result.features.length-i;
+						if(!result.features[thisIndex]){
+							break;
+						}
+						recentRocks=recentRocks+result.features[thisIndex].attributes.RockersName + 
+							" : " +
+							result.features[thisIndex].attributes.HidorFound + 
+							" " +
+							result.features[thisIndex].attributes.Quantity + 
+							" at " +
+							result.features[thisIndex].attributes.ParkName + 
+							"<br />";
 					}
-					recentRocks=recentRocks+result.features[i].attributes.RockersName + 
-						" : " +
-						result.features[i].attributes.HidorFound + 
-						" " +
-						result.features[i].attributes.Quantity + 
-						" at " +
-						result.features[i].attributes.ParkName + 
-						"<br />";
 				}
 				$(".contributer").html(recentRocks);
 				return false;
