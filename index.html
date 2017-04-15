@@ -61,8 +61,8 @@
 			  url: servicePath,
 			  data: querySettings,
 			  success: function(result, xhr){
-				console.log(result, xhr);
-				//var 
+				//console.log(result, xhr);
+				console.log("Updating recent results");
 				var recentRocks = "";
 				if(result.features.length){
 					for(var i=1;i<6;i++){
@@ -87,11 +87,11 @@
 			});
 		};
 
-		//settings
-			//top 5 rocks?
-			//top 5 contributers?
-		//?
 		updateFeatureContent();
+		//set to update 30 seconds
+		setInterval(function(){
+			updateFeatureContent();
+		}, 30000);
 	</script>
 </head>
 
