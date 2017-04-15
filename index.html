@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-	<title>Get started with SceneView - Create a 3D map - 4.0</title>
+	<title>Parks ROCKS!</title>
 	<style>
 		html,
 		body,
@@ -14,31 +14,94 @@
 		  width: 100%;
 		}
 		body {
+			background-color:#93bb41;
 			font-family: arial;
 		}
-		.header, .flare, .contributer {
+		.btn {
+			display: inline-block;
+			padding: 6px 12px;
+			margin-bottom: 0;
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 1.42857143;
+			text-align: center;
+			white-space: nowrap;
+			vertical-align: middle;
+			-ms-touch-action: manipulation;
+			touch-action: manipulation;
+			cursor: pointer;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			background-image: none;
+			border: 1px solid transparent;
+			border-radius: 4px;
+		}
+		#fbLink, #instagramLink{
+			border-radius:12px;
+			display:inline-block;
+			margin-top:3px;
+			padding:7px 5px 5px 5px;
+		}
+		button a {
+			color: #000;
+			text-decoration: none;
+		}
+		.header, .flare, .contributer, #instructionsTitle, #instructionsBlock {
+			margin-left:2%;
+			line-height: 20px;
+		}
+		.flare{
+			font-weight:bold;
+			font-size: 12pt;
+			margin-bottom:2px;
+		}
+		.flareContainer{
+			background-color: #FFFFFF;
+			border: 5px solid #AACC55;
+			border-radius: 12px;		
+			clear:both;
+			float:left;
+			margin-left:2%;
+			width:48%;
+		}
+		.hidStatus{
+			font-weight:bold;
+			font-size: 12pt;
+			margin-bottom:2px;
 			margin-left:2%;
 		}
 		.webmap {
-			width:96%;
-			margin-left:2%;
+			border-radius: 12px;
+		}
+		.webmap {
 			height:75%;
+			margin-left:2%;
 			min-height:400px;
+			width:96%;
 		}
 		#credits table {
-			width:96%;
+			background-color: #FFFFFF;
+			border: 5px solid #AACC55;
+			border-radius: 12px;
 			margin-left:2%;
+			width:96%;
+		}
+		.spacer {
+			width: 100%;
+			line-height: 20px;
+			height: 20px;
+			clear:both;
 		}
 	</style>
-
-	<link rel="stylesheet" href="https://js.arcgis.com/4.3/esri/css/main.css">
-	<script src="https://js.arcgis.com/4.3/"></script>
 	
 	<script
 	  src="http://code.jquery.com/jquery-3.2.1.min.js"
 	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 	  crossorigin="anonymous"></script>
 	  
+
 	<script type="text/javascript">
 		var servicePath = "https://services7.arcgis.com/yUlpDmY4xMAdbBIp/arcgis/rest/services/ParksRocks/FeatureServer/0/query"
 		var querySettings = {
@@ -87,8 +150,10 @@
 							hidFoundHash[result.features[thisIndex].attributes.HidorFound]=0;
 						}
 						hidFoundHash[result.features[thisIndex].attributes.HidorFound] += result.features[thisIndex].attributes.Quantity;
-						console.log(result.features[i]);
 					}
+					console.log(hidFoundHash);
+					$("#hiddenCount").html(hidFoundHash.Hid);
+					$("#foundCount").html(hidFoundHash.Found);
 				}
 				$(".contributer").html(recentRocks);
 				return false;
@@ -109,10 +174,34 @@
 
 <body>
 	<div class='header'>
-		<h1>Tacoma Rocks Metro Parks Interactive App</h1>
+		<h1 style="float:left;">Parks ROCKS!&nbsp;</h1>
+		<span id="fbLink">
+			<a href='https://www.facebook.com/groups/TacomaRocks/' onclick="window.open(this.href, 'addAParkRock', 'width=600;height');return false;"><img src="./fb-icon.png"></img></a>
+		</span>
+		<span id="instagramLink">
+			<a href='https://www.instagram.com/explore/tags/tacomarocks/?hl=en' onclick="window.open(this.href, 'addAParkRock', 'width=600;height');return false;"><img src="./Instagram-icon.png"></img></a>
+		</span>
 	</div>
-	<div class='flare'>Recent Rockers</div>
-	<div class='contributer'>&nbsp;</div>
+	<div class='flareContainer'>
+		<div class='flare'>Recent Rockers</div>
+		<div class='contributer'>&nbsp;</div>
+		<div class='spacer'>&nbsp;</div>
+		<div class='hidStatus'>
+			Total Hidden : <span id='hiddenCount'>...</span>
+			Total Found : <span id='foundCount'>...</span>
+		</div>
+		<div id='instructionsTitle'>View Parks ROCKS! Hidden and Found</div>
+		<div id='instructionsBlock'>
+			Yellow was hidden , Blue has been found!
+			You can search for rocks posted within a certain timeframe by clicking the far left button (query) and selecting to see rocks after a selected date. 
+			Find out more about the local parks by clicking on the parks in green!
+			<div>&nbsp;</div>
+			<button id='addLink' class='btn'>
+				<a href='http://savannanagorski.maps.arcgis.com/apps/GeoForm/index.html?appid=8ca7dced5fdf454f9e5207b688c1365e#top' onclick="window.open(this.href, 'addAParkRock', 'width=600;height');return false;">Add your own hidden or found rock</a>
+			</button>
+			<div>&nbsp;</div>
+		</div>
+	</div>
 	<div class='spacer'>&nbsp;</div>
 	<!-- Most Recent<br /> -->
 	<!-- Find/Hide<br /> -->
@@ -128,15 +217,12 @@
 				</td>
 				<td>
 					<img class="rte_image_full" src="http://www.metroparkstacoma.org/files/library/geo-engineers-logo-800x_s.jpg" width="180">
-				
 				</td>
 				<td>
 					<img class="rte_image_full" height="85" src="http://www.metroparkstacoma.org/files/library/uw-tacoma-logo-800x_s.jpg" width="85">
-				
 				</td>
 				<td>
 					<img class="rte_image_full" height="52" src="http://www.metroparkstacoma.org/files/library/cloudpwrlogojpg_m.jpg" width="207">
-				
 				</td>
 			</tr>
 			<tr>
@@ -162,10 +248,10 @@
 				</td>
 				<td>
 					<img class="rte_image_full" src="http://www.metroparkstacoma.org/files/library/trailhead-labs-logo_s.png" width="180">
-				
 				</td>
 			</tr>
 		</table>
 	</div>	
+	<div>&nbsp;</div>
 </body>
 </html>
