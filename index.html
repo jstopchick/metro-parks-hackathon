@@ -1,45 +1,104 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-  <title>Get started with SceneView - Create a 3D map - 4.0</title>
-  <style>
-    html,
-    body,
-    #viewDiv {
-      padding: 0;
-      margin: 0;
-      height: 100%;
-      width: 100%;
-    }
-	body {
-		font-family: arial;
-	}
-	.header, .flare {
-		margin-left:2%;
-	}
-	.webmap {
-		width:96%;
-		margin-left:2%;
-		height:75%;
-		min-height:400px;
-	}
-	#credits table {
-		width:96%;
-		margin-left:2%;
-	}
-  </style>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+	<title>Get started with SceneView - Create a 3D map - 4.0</title>
+	<style>
+		html,
+		body,
+		#viewDiv {
+		  padding: 0;
+		  margin: 0;
+		  height: 100%;
+		  width: 100%;
+		}
+		body {
+			font-family: arial;
+		}
+		.header, .flare, .contributer {
+			margin-left:2%;
+		}
+		.webmap {
+			width:96%;
+			margin-left:2%;
+			height:75%;
+			min-height:400px;
+		}
+		#credits table {
+			width:96%;
+			margin-left:2%;
+		}
+	</style>
 
-  <link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css">
+	<!--<link rel="stylesheet" href="https://js.arcgis.com/4.3/esri/css/main.css">-->
+	<!--<script src="https://js.arcgis.com/4.3/"></script>-->
+	<script
+	  src="http://code.jquery.com/jquery-3.2.1.min.js"
+	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	  crossorigin="anonymous"></script>
+	  
+	<script type="text/javascript">
+		var servicePath = "https://services7.arcgis.com/yUlpDmY4xMAdbBIp/arcgis/rest/services/ParksRocks/FeatureServer/0/query"
+		var querySettings = {
+			where : "1=1",
+			geometryType:"esriGeometryEnvelope",
+			spatialRel:"esriSpatialRelIntersects",
+			//resultType:"none",
+			//distance:"0.0",
+			units:"esriSRUnit_Meter",
+			returnGeodetic:false,
+			outFields:"*",
+			returnGeometry:true,
+			multipatchOption:"xyFootprint",
+			f:"pjson",
+			token:""
+		};
+		
+		var updateFeatureContent = function(){
+			$.ajax({
+			  type: "get",
+			  url: servicePath,
+			  data: querySettings,
+			  success: function(result, xhr){
+				console.log(result, xhr);
+				//var 
+				var recentRocks = "";
+				for(var i=0;i<5;i++){
+					if(!result.features[i]){
+						break;
+					}
+					recentRocks=recentRocks+result.features[i].attributes.RockersName + 
+						" : " +
+						result.features[i].attributes.HidorFound + 
+						" " +
+						result.features[i].attributes.Quantity + 
+						" at " +
+						result.features[i].attributes.ParkName + 
+						"<br />";
+				}
+				$(".contributer").html(recentRocks);
+				return false;
+			  },
+			  dataType: "json"
+			});
+		};
+
+		//settings
+			//top 5 rocks?
+			//top 5 contributers?
+		//?
+		updateFeatureContent();
+	</script>
 </head>
 
 <body>
 	<div class='header'>
 		<h1>Tacoma Rocks Metro Parks Interactive App</h1>
 	</div>
-	<div class='flare'>Top 5 contributers</div>
-	<div>&nbsp;</div>
+	<div class='flare'>Recent Rockers</div>
+	<div class='contributer'>&nbsp;</div>
+	<div class='spacer'>&nbsp;</div>
 	<!-- Most Recent<br /> -->
 	<!-- Find/Hide<br /> -->
 	<iframe src="http://arcg.is/0jTyia" class='webmap'></iframe>
