@@ -66,6 +66,11 @@
 			margin-left:2%;
 			width:48%;
 		}
+		@media (max-width: 800px) {
+		  .flareContainer{
+			width:94%;
+		  }
+		}		
 		.hidStatus{
 			font-weight:bold;
 			font-size: 12pt;
@@ -84,12 +89,25 @@
 			margin-left:2%;
 			width: 100%;
 		}
-		#credits table {
+		#credits {
 			background-color: #FFFFFF;
 			border: 5px solid #AACC55;
 			border-radius: 12px;
 			margin-left:2%;
 			width:96%;
+		}
+		#credits .row{
+			border: 1px solid #ccc;
+			clear:both;
+			text-align: center;			
+		}
+		#credits .row div {
+			background-color: #FFFFFF;
+			margin: auto;
+			display: inline;
+		}
+		#credits .row div img {
+			padding: 10px 40px;
 		}
 		.spacer {
 			width: 100%;
@@ -173,13 +191,9 @@
 			}
 			updateFeatureContent();
 		}, 30000);
-		
-		
 	</script>
 </head>
-
 <body>
-	
 	<div class='header'>
 		<h1 style="float:left;">Parks ROCKS!&nbsp;</h1>
 		<span id="fbLink">
@@ -220,47 +234,47 @@
 	<div>&nbsp;</div>
 
 	<div id='credits'>
-		<table>
-			<tr>
-				<td>
+		<div>
+			<div class='row'>
+				<div>
 					<img alt="Metro Parks Tacoma Logo" class="rte_image_full" src="http://www.metroparkstacoma.org/files/library/mptpmslogonotm200w_s.jpg" title="Metro Parks Tacoma Logo" width="180">				
-				</td>
-				<td>
+				</div>
+				<div>
 					<img class="rte_image_full" src="http://www.metroparkstacoma.org/files/library/geo-engineers-logo-800x_s.jpg" width="180">
-				</td>
-				<td>
+				</div>
+				<div>
 					<img class="rte_image_full" height="85" src="http://www.metroparkstacoma.org/files/library/uw-tacoma-logo-800x_s.jpg" width="85">
-				</td>
-				<td>
+				</div>
+				<div>
 					<img class="rte_image_full" height="52" src="http://www.metroparkstacoma.org/files/library/cloudpwrlogojpg_m.jpg" width="207">
-				</td>
-			</tr>
-			<tr>
-				<td>
+				</div>
+			</div>
+			<div class='row'>
+				<div>
 					<img class="rte_image_full" src="http://www.metroparkstacoma.org/files/library/gordonthomashoneywelllogo_m.jpg" style="width: 310px; height: 81px;">
-				</td>
-				<td>
+				</div>
+				<div>
 					<img class="rte_image_full" height="65" src="http://www.metroparkstacoma.org/files/library/turner-logo_m.jpg" width="229">
-				</td>
-				<td>
+				</div>
+				<div>
 					<img class="rte_image_full" height="57" src="http://www.metroparkstacoma.org/files/library/esrilogo-png_m.png" width="153">
-				</td>
-				<td>
+				</div>
+				<div>
 					<img class="rte_image_full" src="http://www.metroparkstacoma.org/files/library/newtechnwlogo_s.png" width="180">
-				</td>
-			</tr>
-			<tr>
-				<td>
+				</div>
+			</div>
+			<div class='row'>
+				<div>
 					<img class="rte_image_full" src="http://www.metroparkstacoma.org/files/library/nrpa-logo_m.png"  width="310">				
-				</td>
-				<td>
+				</div>
+				<div>
 					<img class="rte_image_full" src="http://www.metroparkstacoma.org/files/library/washington-hometown-logo_m.png" style="width: 200px; height: 146px;">				
-				</td>
-				<td>
+				</div>
+				<div>
 					<img class="rte_image_full" src="http://www.metroparkstacoma.org/files/library/trailhead-labs-logo_s.png" width="180">
-				</td>
-			</tr>
-		</table>
+				</div>
+			</div>
+		</div>
 	</div>	
 	<div>&nbsp;</div>
 </body>
