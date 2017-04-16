@@ -48,9 +48,13 @@
 			color: #000;
 			text-decoration: none;
 		}
-		.header, .flare, .contributer, #instructionsTitle, #instructionsBlock {
+		.header, .flare, .contributer, #instructionsTitle, #instructionsBlock, #feedback{
 			margin-left:2%;
 			line-height: 20px;
+		}
+		#feedback{
+			clear:both;
+			margin: 0px 0px 10px 2%;
 		}
 		.flare{
 			font-weight:bold;
@@ -203,6 +207,13 @@
 			<a href='https://www.instagram.com/explore/tags/tacomarocks/?hl=en' onclick="window.open(this.href, 'addAParkRock', 'width=600;height');return false;"><img src="./Instagram-icon.png"></img></a>
 		</span>
 	</div>
+	<div id='feedback'>
+		<a href="mailto:savanna@turquoisearrow.com?subject=Tacoma%20ROCKS! ParksROCKS! Feedback">
+			<button id='addLink' class='btn'>
+				Send Feedback
+			</button>
+		</a>
+	</div>
 	<div class='flareContainer'>
 		<div class='flare'>Recent Rockers</div>
 		<div class='contributer'>&nbsp;</div>
@@ -217,9 +228,11 @@
 			You can search for rocks posted within a certain timeframe by clicking the far left button (query) and selecting to see rocks after a selected date. 
 			Find out more about the local parks by clicking on the parks in green!
 			<div>&nbsp;</div>
-			<button id='addLink' class='btn'>
-				<a href='http://savannanagorski.maps.arcgis.com/apps/GeoForm/index.html?appid=8ca7dced5fdf454f9e5207b688c1365e#top' onclick="window.open(this.href, 'addAParkRock', 'width=600;height');return false;">Add your own hidden or found rock</a>
-			</button>
+			<a href='http://savannanagorski.maps.arcgis.com/apps/GeoForm/index.html?appid=8ca7dced5fdf454f9e5207b688c1365e#top' onclick="window.open(this.href, 'addAParkRock', 'width=600;height');return false;">
+				<button id='addLink' class='btn'>
+					Add your own hidden or found rock
+				</button>
+			</a>
 			<div>&nbsp;</div>
 		</div>
 	</div>
