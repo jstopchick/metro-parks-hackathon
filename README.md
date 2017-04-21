@@ -33,11 +33,11 @@
 
 ### Contributors
 - Andrea U.     : Data Analysis
-- Savanah N     : ArcGIS webApp wizard
+- Savanah N.    : ArcGIS webApp wizard
 - Christana C.  : Rock painter, and general GIS help
-- Shawn Zilbert : Testing
+- Shawn Z.      : Testing
 - Jonathan S.   : Javascript webpage scaffold 
-- Joe D         : collab tools, testing
+- Joe D.        : collab tools, testing
 
 ### Presentation
 [Google Slides](https://docs.google.com/presentation/d/1tqUsA1fp5VMUpYjFfAQNnCgMz5ixqBllQb6Xu22DQCo/edit?usp=sharing)
